@@ -1,71 +1,65 @@
-// max nesting level is 5
+import { FileModel } from 'models/fileModel'
 
 export const files: IFile[] = [
-  { name: 'rndm file.exe', type: 'file', id: crypto.randomUUID() },
-  {
+  new FileModel({ name: 'rndm file.exe', type: 'file' }),
+  new FileModel({
     name: 'Random folder',
-    id: crypto.randomUUID(),
     type: 'folder',
     children: [
-      { name: 'img.jpeg', type: 'file', id: crypto.randomUUID() },
-      { name: 'icon.svg', type: 'file', id: crypto.randomUUID() },
-      {
+      new FileModel({ name: 'img.jpeg', type: 'file' }),
+      new FileModel({ name: 'icon.svg', type: 'file' }),
+      new FileModel({
         name: 'nested folder',
-        id: crypto.randomUUID(),
         type: 'folder',
         children: [
-          { name: 'script.bat', type: 'file', id: crypto.randomUUID() },
-          { name: 'afaw.exe', type: 'file', id: crypto.randomUUID() },
-          { name: 'wwr.exe', type: 'file', id: crypto.randomUUID() },
-          {
+          new FileModel({ name: 'script.bat', type: 'file' }),
+          new FileModel({ name: 'afaw.exe', type: 'file' }),
+          new FileModel({ name: 'wwr.exe', type: 'file' }),
+          new FileModel({
             name: 'folder 1',
-            id: crypto.randomUUID(),
             type: 'folder',
             children: [
-              {
+              new FileModel({
                 name: 'foldr 2',
-                id: crypto.randomUUID(),
                 type: 'folder',
                 children: [
-                  { name: 'wwer.eep', type: 'file', id: crypto.randomUUID() },
-                  { name: '1.ssl', type: 'file', id: crypto.randomUUID() },
-                  { name: 'awefwf.eer', type: 'file', id: crypto.randomUUID() },
+                  new FileModel({ name: 'wwer.eep', type: 'file' }),
+                  new FileModel({ name: '1.ssl', type: 'file' }),
+                  new FileModel({ name: 'awefwf.eer', type: 'file' }),
                 ],
-              },
-              { name: 'file.file', type: 'file', id: crypto.randomUUID() },
+              }),
+              new FileModel({ name: 'file.file', type: 'file' }),
             ],
-          },
+          }),
         ],
-      },
-      { name: 'qa.txt', type: 'file', id: crypto.randomUUID() },
-      { name: 'rt.txt', type: 'file', id: crypto.randomUUID() },
+      }),
+      new FileModel({ name: 'qa.txt', type: 'file' }),
+      new FileModel({ name: 'rt.txt', type: 'file' }),
     ],
-  },
-  {
+  }),
+  new FileModel({
     name: 'documents',
-    id: crypto.randomUUID(),
     type: 'folder',
     children: [
-      { name: 'ticket.pdf', type: 'file', id: crypto.randomUUID() },
-      { name: 'ticket2.pdf', type: 'file', id: crypto.randomUUID() },
-      { name: 'scan.jpeg', type: 'file', id: crypto.randomUUID() },
+      new FileModel({ name: 'ticket.pdf', type: 'file' }),
+      new FileModel({ name: 'ticket2.pdf', type: 'file' }),
+      new FileModel({ name: 'scan.jpeg', type: 'file' }),
     ],
-  },
-  { name: 'photo.jpeg', type: 'file', id: crypto.randomUUID() },
-  { name: 'aeer.dll', type: 'file', id: crypto.randomUUID() },
-  { name: 'awefwer', type: 'file', id: crypto.randomUUID() },
-  {
+  }),
+  new FileModel({ name: 'photo.jpeg', type: 'file' }),
+  new FileModel({ name: 'aeer.dll', type: 'file' }),
+  new FileModel({ name: 'awefwer', type: 'file' }),
+  new FileModel({
     name: 'sfad',
-    id: crypto.randomUUID(),
     type: 'folder',
     children: [
-      { name: 'gfbr', type: 'file', id: crypto.randomUUID() },
-      { name: 'xcvb', type: 'file', id: crypto.randomUUID() },
-      { name: 'q3r', type: 'file', id: crypto.randomUUID() },
-      { name: 'khjil', type: 'file', id: crypto.randomUUID() },
+      new FileModel({ name: 'gfbr', type: 'file' }),
+      new FileModel({ name: 'xcvb', type: 'file' }),
+      new FileModel({ name: 'q3r', type: 'file' }),
+      new FileModel({ name: 'khjil', type: 'file' }),
     ],
-  },
-  { name: 'rbw', type: 'file', id: crypto.randomUUID() },
-  { name: 'q2r', type: 'file', id: crypto.randomUUID() },
-  { name: 'j5y86o', type: 'file', id: crypto.randomUUID() },
+  }),
+  new FileModel({ name: 'rbw', type: 'file' }),
+  new FileModel({ name: 'q2r', type: 'file' }),
+  new FileModel({ name: 'j5y86o', type: 'file' }),
 ]

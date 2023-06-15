@@ -6,6 +6,7 @@ interface IFile {
   id: string
   type: FileType
   children?: IFile[]
+  sortedChildren?: IFile[]
 }
 
 interface IThemes {
