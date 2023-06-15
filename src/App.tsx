@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
-import { SearchBar, FilesTree, Header } from './components/'
+import { SearchBar, FilesTree, Header } from 'components/'
 
-import { setInitialTheme } from './utils'
+import { setInitialTheme } from 'utils'
 
 import styles from './App.module.css'
 
-// baseUrl setting for vite
 // animations (appear, disappear)
 // complexity (search of tree nodes), more alghoritms with different complexity, functions such as in VSC (add, delete, rename, innerSort(folders first then files))
 // a lot of files (for virtualizations or smthng else)

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import cx from 'classnames'
+import cx from 'classnames'
 import { getTheme, setTheme as setStorageTheme } from 'utils'
 
 import styles from './Header.module.css'
@@ -8,7 +8,7 @@ import { ReactComponent as SunIcon } from './assets/sun.svg'
 import { ReactComponent as MoonIcon } from './assets/moon.svg'
 
 export const Header: React.FC = () => {
-  const [_theme, setTheme] = useState<Theme>(getTheme())
+  const [theme, setTheme] = useState<Theme>(getTheme())
 
   const setDarkTheme = () => {
     setTheme('DARK')
@@ -22,10 +22,20 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <button onClick={setDarkTheme} className={styles.modeButton}>
-        <MoonIcon className={styles.icon} />
+        <MoonIcon
+          className={cx({
+            [styles.icon]: true,
+            [styles.isActive]: theme === 'DARK',
+          })}
+        />
       </button>
       <button onClick={setLightTheme} className={styles.modeButton}>
-        <SunIcon className={styles.icon} />
+        <SunIcon
+          className={cx({
+            [styles.icon]: true,
+            [styles.isActive]: theme === 'LIGHT',
+          })}
+        />
       </button>
     </header>
   )

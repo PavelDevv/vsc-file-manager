@@ -9,6 +9,7 @@ import styles from './FilesTree.module.css'
 export const FilesTree: React.FC = observer(() => {
   const { files, searchResults } = filesStore
   // no search results should be addedd too
+  console.log(searchResults)
   const items = searchResults.length > 0 ? searchResults : files
 
   return (

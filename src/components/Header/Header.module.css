@@ -6,6 +6,8 @@
 }
 
 .modeButton {
+  height: 25px;
+  width: 25px;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -18,11 +20,11 @@
 }
 
 .modeButton:first-of-type {
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 .modeButton:last-of-type {
-  margin-left: 10px;
+  margin-left: 6px;
 }
 
 .icon {
@@ -30,4 +32,8 @@
   width: 25px;
   fill: var(--icon-main-color);
   transition: 0.2s ease fill;
+}
+
+.isActive {
+  fill: var(--orange);
 }
