@@ -16,11 +16,12 @@ interface IProps {
 
 type AllProps = IFile & IProps
 
-export const File: React.FC<AllProps> = observer(({ name, children, id, nestingLevel }) => {
+export const File: React.FC<AllProps> = observer(({ name, children, id, nestingLevel, type }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isRenameMode, setIsRenameMode] = useState<boolean>(false)
-  const type = children !== undefined ? 'folder' : 'file'
-  const Icon = type === 'folder' ? FolderIcon : FileIcon
+  const isFolder = type === 'folder'
+  const withChildren = children && children.length > 0
+  const Icon = isFolder ? FolderIcon : FileIcon
 
   const toggleFolder = () => setIsOpen(!isOpen)
 
@@ -37,12 +38,12 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, nestingL
   }
 
   const addFile = () => {
-    filesStore.add({ name: '', id })
+    filesStore.add({ name: '', id, type: 'file' })
     if (!isOpen) setIsOpen(true)
   }
 
   const addFolder = () => {
-    filesStore.add({ name: '', withChildren: true, id })
+    filesStore.add({ name: '', id, type: 'folder' })
     if (!isOpen) setIsOpen(true)
   }
 
@@ -60,12 +61,12 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, nestingL
     <div
       className={cx({
         [styles.file]: true,
-        [styles.folderIsOpen]: isOpen,
+        [styles.folderIsOpen]: isOpen && withChildren,
       })}
     >
       <div className={styles.infoAndControls}>
         <div
-          onClick={type === 'folder' ? toggleFolder : undefined}
+          onClick={isFolder ? toggleFolder : undefined}
           className={cx({
             [styles.fileInfo]: true,
             [styles.isOpen]: isOpen,

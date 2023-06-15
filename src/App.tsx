@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
-import { SearchBar, FilesTree, Header } from 'components/'
+import { SearchBar, FilesTree, Header } from 'components'
 
 import { setInitialTheme } from 'utils'
 
 import styles from './App.module.css'
 
+// cut folder with 0 children bar
+// check for observer in File.tsx
+// maybe rework files mock to generate it with model
+// innerSort (folders first => then files, maybe custom sort with both name and type)
 // responsive design
 // animations (appear, disappear)
-// innerSort (folders first => then files)
 // a lot of files (for virtualizations or smthng else)
 // tests
 

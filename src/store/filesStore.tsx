@@ -5,7 +5,7 @@ import { files } from './filesMock'
 interface IFilesStore {
   query: string
   files: IFile[]
-  add: ({ name, withChildren }: IAdd) => void
+  add: ({ name, type, id }: IAdd) => void
   remove: (id: string) => void
   rename: (id: string, name: string) => void
   setQuery: (query: string) => void
@@ -15,7 +15,7 @@ interface IFilesStore {
 interface IAdd {
   name: string
   id: string
-  withChildren?: boolean
+  type: FileType
 }
 
 class FilesStore implements IFilesStore {
@@ -37,7 +37,11 @@ class FilesStore implements IFilesStore {
 
     files.forEach((file) => {
       if (file.name.toLowerCase().includes(this.query.toLowerCase())) {
-        searchResult.push(file)
+        const copy = {
+          ...file,
+          children: undefined,
+        }
+        searchResult.push(copy)
       }
 
       if (file.children?.length && file.children.length > 0) {
@@ -63,8 +67,8 @@ class FilesStore implements IFilesStore {
     }
   }
 
-  add({ name, withChildren, id }: IAdd) {
-    const newFile = new FileModel({ name, withChildren })
+  add({ name, type, id }: IAdd) {
+    const newFile = new FileModel({ name, type })
     this.#getItem(id, this.files, (file) => file.children?.push(newFile))
   }
 

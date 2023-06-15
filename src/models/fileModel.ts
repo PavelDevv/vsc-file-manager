@@ -2,18 +2,25 @@ import { extendObservable } from 'mobx'
 
 interface IProps {
   name: string
-  withChildren?: boolean
+  type: FileType
 }
 
 export class FileModel implements IFile {
   name = ''
   id = ''
+  type: FileType
   children?: IFile[] | undefined
 
-  constructor({ name, withChildren }: IProps) {
+  constructor({ name, type }: IProps) {
     this.name = name
     this.id = crypto.randomUUID()
-    if (withChildren === true) this.children = []
-    extendObservable(this, { name: this.name, id: this.id, children: this.children })
+    this.type = type
+    if (type === 'folder') this.children = []
+    extendObservable(this, {
+      name: this.name,
+      type: this.type,
+      id: this.id,
+      children: this.children,
+    })
   }
 }
