@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.modeButton {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: 0.2s ease opacity;
+}
+
+.modeButton:hover {
+  opacity: 0.2;
+}
+
+.modeButton:first-of-type {
+  margin-right: 10px;
+}
+
+.modeButton:last-of-type {
+  margin-left: 10px;
+}
+
+.modeButton img {
+  height: 25px;
+  width: 25px;
+}

@@ -1,0 +1,41 @@
+.renameInput {
+  position: relative;
+}
+
+.renameInput input {
+  display: block;
+  height: 20px;
+  font-size: 18px;
+  line-height: 16px;
+  padding-right: 45px;
+  margin-left: -3px;
+  border: 1px solid var(--white);
+  border-radius: 3px;
+  outline: none;
+}
+
+.renameInput input:focus {
+  border-color: var(--lightblue);
+}
+
+.renameInput button {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.renameInput button:first-of-type {
+  right: 25px;
+}
+
+.renameInput button img {
+  width: 15px;
+  height: 15px;
+}

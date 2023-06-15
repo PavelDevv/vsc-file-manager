@@ -1,0 +1,12 @@
+.controls button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  margin-right: 16px;
+}
+
+.controls button img {
+  height: 20px;
+  width: 20px;
+}

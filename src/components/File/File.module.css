@@ -1,0 +1,58 @@
+.file {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.file:last-of-type {
+  margin-bottom: 0;
+}
+
+.infoAndControls {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.2s ease background-color;
+}
+
+.infoAndControls:hover {
+  background-color: #3f3f3f;
+}
+
+.controls {
+  opacity: 0;
+  transition: 0.2s ease opacity;
+}
+
+.infoAndControls:hover .controls {
+  opacity: 1;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+}
+
+.fileInfo p {
+  font-size: 18px;
+  line-height: 16px;
+  color: var(--white);
+  margin: 0;
+  transition: 0.2s ease color;
+}
+
+.isOpen p {
+  color: var(--orange);
+}
+
+.typeIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  fill: #fff;
+}
+
+.children {
+  margin-top: 12px;
+  padding-left: 45px;
+}

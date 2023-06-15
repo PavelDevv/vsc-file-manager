@@ -1,0 +1,6 @@
+export { Controls } from './Controls/Controls'
+export { File } from './File/File'
+export { Header } from './Header/Header'
+export { FilesTree } from './FilesTree/FilesTree'
+export { SearchBar } from './SearchBar/SearchBar'
+export { RenameInput } from './RenameInput/RenameInput'
