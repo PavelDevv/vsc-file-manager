@@ -1,5 +1,5 @@
 import { makeAutoObservable, toJS } from 'mobx'
-import { FileModel } from '../models/fileModel'
+import { FileModel } from 'models/fileModel'
 import { files } from './filesMock'
 
 interface IFilesStore {

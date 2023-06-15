@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import cx from 'classnames'
-import { getTheme, setTheme as setStorageTheme } from '../../utils'
+import { getTheme, setTheme as setStorageTheme } from 'utils'
 
 import styles from './Header.module.css'
 

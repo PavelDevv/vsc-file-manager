@@ -1,8 +1,8 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 
-import { File } from '../'
-import filesStore from '../../store/filesStore'
+import { File } from 'components'
+import filesStore from 'store/filesStore'
 
 import styles from './FilesTree.module.css'
 

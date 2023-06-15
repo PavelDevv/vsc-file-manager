@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
-import filesStore from '../../store/filesStore'
+import filesStore from 'store/filesStore'
 
-import { Controls, RenameInput } from '../'
+import { Controls, RenameInput } from 'components'
 
 import { ReactComponent as FileIcon } from './assets/file.svg'
 import { ReactComponent as FolderIcon } from './assets/folder.svg'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 
 import { ReactComponent as SubmitIcon } from './assets/check.svg'
-import { ReactComponent as CancelIcon } from '../Controls/assets/delete.svg'
+import { ReactComponent as CancelIcon } from 'components/Controls/assets/delete.svg'
 
 import styles from './RenameInput.module.css'
 

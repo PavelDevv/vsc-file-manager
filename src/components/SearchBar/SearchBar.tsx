@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import filesStore from '../../store/filesStore'
+import filesStore from 'store/filesStore'
 
 import styles from './SearchBar.module.css'
 
