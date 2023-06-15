@@ -14,7 +14,7 @@
 }
 
 .modeButton:hover {
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 .modeButton:first-of-type {
@@ -25,7 +25,9 @@
   margin-left: 10px;
 }
 
-.modeButton img {
+.icon {
   height: 25px;
   width: 25px;
+  fill: var(--icon-main-color);
+  transition: 0.2s ease fill;
 }

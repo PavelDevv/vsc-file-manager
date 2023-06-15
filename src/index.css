@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--app-background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,6 +16,7 @@
   --white: #ffffff;
   --lightblue: #03a9f4;
   --orange: #ee891b;
+  transition: 0.2s ease background-color;
 }
 
 body {

@@ -5,17 +5,10 @@ import filesStore from '../../store/filesStore'
 
 import { Controls, RenameInput } from '../'
 
-import FileIcon from './assets/file.svg'
-import FolderIcon from './assets/folder.svg'
+import { ReactComponent as FileIcon } from './assets/file.svg'
+import { ReactComponent as FolderIcon } from './assets/folder.svg'
 
 import styles from './File.module.css'
-
-type TFileIcon = Record<FileType, string>
-
-const iconMap: TFileIcon = {
-  file: FileIcon,
-  folder: FolderIcon,
-}
 
 interface IProps {
   nestingLevel: number
@@ -27,6 +20,7 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, nestingL
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isRenameMode, setIsRenameMode] = useState<boolean>(false)
   const type = children !== undefined ? 'folder' : 'file'
+  const Icon = type === 'folder' ? FolderIcon : FileIcon
 
   const toggleFolder = () => setIsOpen(!isOpen)
 
@@ -63,7 +57,12 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, nestingL
   }, [name])
 
   return (
-    <div className={styles.file}>
+    <div
+      className={cx({
+        [styles.file]: true,
+        [styles.folderIsOpen]: isOpen,
+      })}
+    >
       <div className={styles.infoAndControls}>
         <div
           onClick={type === 'folder' ? toggleFolder : undefined}
@@ -72,7 +71,7 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, nestingL
             [styles.isOpen]: isOpen,
           })}
         >
-          <img className={styles.typeIcon} src={iconMap[type]} alt={type} />
+          <Icon className={styles.typeIcon} />
           {!isRenameMode ? (
             <p>{name}</p>
           ) : (

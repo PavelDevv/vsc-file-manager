@@ -1,10 +1,10 @@
 import React from 'react'
 import cx from 'classnames'
 
-import AddFileIcon from './assets/add-file.svg'
-import AddFolderIcon from './assets/add-folder.svg'
-import DeleteIcon from './assets/delete.svg'
-import RenameIcon from './assets/pen.svg'
+import { ReactComponent as AddFileIcon } from './assets/add-file.svg'
+import { ReactComponent as AddFolderIcon } from './assets/add-folder.svg'
+import { ReactComponent as DeleteIcon } from './assets/delete.svg'
+import { ReactComponent as RenameIcon } from './assets/pen.svg'
 
 import styles from './Controls.module.css'
 
@@ -30,18 +30,18 @@ export const Controls: React.FC<IProps> = ({
       {type === 'folder' && (
         <>
           <button onClick={addFile}>
-            <img src={AddFileIcon} alt="Add File" />
+            <AddFileIcon className={styles.icon} />
           </button>
           <button onClick={addFolder}>
-            <img src={AddFolderIcon} alt="Add Folder" />
+            <AddFolderIcon className={styles.icon} />
           </button>
         </>
       )}
       <button onClick={startRename}>
-        <img src={RenameIcon} alt="Rename" />
+        <RenameIcon className={styles.icon} />
       </button>
       <button onClick={removeFile}>
-        <img src={DeleteIcon} alt="Delete" />
+        <DeleteIcon className={styles.icon} />
       </button>
     </div>
   )

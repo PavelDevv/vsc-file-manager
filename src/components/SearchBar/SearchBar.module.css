@@ -1,16 +1,17 @@
 .searchBar input {
   display: block;
   margin: 0 auto;
+  padding-left: 18px;
   width: calc(700px - 18px - 2px - 2px);
   height: 50px;
-  padding-left: 18px;
   font-size: 24px;
-  border: 1px solid var(--white);
+  border: 1px solid var(--search-border-color);
   border-radius: 8px;
+  background-color: transparent;
   outline: none;
   transition: 0.2s ease border-color;
 }
 
 .searchBar input:focus {
-  border-color: var(--lightblue);
+  border-color: var(--orange);
 }

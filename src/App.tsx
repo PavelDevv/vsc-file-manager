@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SearchBar, FilesTree, Header } from './components/'
+
+import { setInitialTheme } from './utils'
 
 import styles from './App.module.css'
 
-// husky
+// baseUrl setting for vite
 // animations (appear, disappear)
 // complexity (search of tree nodes), more alghoritms with different complexity, functions such as in VSC (add, delete, rename, innerSort(folders first then files))
 // a lot of files (for virtualizations or smthng else)
 // mobx and redux versions (mobx store with getter for search query)
-// light/dark mode with smooth transition
 // tests
 
 const App: React.FC = () => {
+  useEffect(() => {
+    setInitialTheme()
+  }, [])
   return (
     <>
       <Header />

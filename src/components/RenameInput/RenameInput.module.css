@@ -5,17 +5,19 @@
 .renameInput input {
   display: block;
   height: 20px;
-  font-size: 18px;
-  line-height: 16px;
   padding-right: 45px;
   margin-left: -3px;
+  background-color: transparent;
   border: 1px solid var(--white);
   border-radius: 3px;
   outline: none;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 16px;
 }
 
 .renameInput input:focus {
-  border-color: var(--lightblue);
+  border-color: var(--orange);
 }
 
 .renameInput button {
@@ -35,7 +37,9 @@
   right: 25px;
 }
 
-.renameInput button img {
+.icon {
   width: 15px;
   height: 15px;
+  fill: var(--icon-main-color);
+  transition: 0.2s ease fill;
 }

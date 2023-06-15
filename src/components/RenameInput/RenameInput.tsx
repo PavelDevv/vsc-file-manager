@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 
-import SubmitIcon from './assets/check.svg'
-import CancelIcon from '../Controls/assets/delete.svg'
+import { ReactComponent as SubmitIcon } from './assets/check.svg'
+import { ReactComponent as CancelIcon } from '../Controls/assets/delete.svg'
 
 import styles from './RenameInput.module.css'
 
@@ -82,14 +82,21 @@ export const RenameInput: React.FC<IProps> = ({
 
   return (
     <div ref={containerRef} className={styles.renameInput}>
-      <input maxLength={25} ref={inputRef} value={name} onChange={handleChange} type="text" />
+      <input
+        spellCheck={false}
+        maxLength={25}
+        ref={inputRef}
+        value={name}
+        onChange={handleChange}
+        type="text"
+      />
 
       <button onClick={onSubmit}>
-        <img src={SubmitIcon} alt="Submit" />
+        <SubmitIcon className={styles.icon} />
       </button>
 
       <button onClick={handleCancel}>
-        <img src={CancelIcon} alt="Cancel" />
+        <CancelIcon className={styles.icon} />
       </button>
     </div>
   )
