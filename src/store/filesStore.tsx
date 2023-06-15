@@ -1,4 +1,4 @@
-import { makeAutoObservable, toJS } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { FileModel } from 'models/fileModel'
 import { files } from './filesMock'
 
@@ -9,7 +9,7 @@ interface IFilesStore {
   remove: (id: string) => void
   rename: (id: string, name: string) => void
   setQuery: (query: string) => void
-  searchResults: IFile[]
+  searchResults: IFile[] | undefined
 }
 
 interface IAdd {
@@ -26,21 +26,23 @@ class FilesStore implements IFilesStore {
     makeAutoObservable(this, {}, { deep: true })
   }
 
-  get searchResults(): IFile[] {
-    const searchResult = this.#searchItem(toJS(this.files))
+  get searchResults(): IFile[] | undefined {
+    if (!this.query.length) return undefined
+    const searchResult = this.#searchItems(this.files)
     return searchResult
   }
 
-  #searchItem(files: IFile[]): IFile[] {
+  #searchItems(files: IFile[]): IFile[] {
     const searchResult: IFile[] = []
 
     files.forEach((file) => {
-      if (file.name.includes(this.query)) {
+      if (file.name.toLowerCase().includes(this.query.toLowerCase())) {
         searchResult.push(file)
       }
 
       if (file.children?.length && file.children.length > 0) {
-        this.#searchItem(file.children)
+        const res = this.#searchItems(file.children as IFile[])
+        searchResult.push(...res)
       }
     })
 
@@ -61,13 +63,8 @@ class FilesStore implements IFilesStore {
     }
   }
 
-  // newly added items are not observable (try to add item and rename it)
   add({ name, withChildren, id }: IAdd) {
     const newFile = new FileModel({ name, withChildren })
-    // const newFile: IFile = {
-    //   name: name,
-    //   id: crypto.randomUUID(),
-    // }
     this.#getItem(id, this.files, (file) => file.children?.push(newFile))
   }
 
