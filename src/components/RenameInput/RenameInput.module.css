@@ -12,8 +12,8 @@
   border-radius: 3px;
   outline: none;
   color: var(--text-color);
-  font-size: 18px;
-  line-height: 16px;
+  font-size: 22px;
+  line-height: 20px;
 }
 
 .renameInput input:focus {
@@ -42,4 +42,13 @@
   height: 15px;
   fill: var(--icon-main-color);
   transition: 0.2s ease fill;
+}
+
+@media screen and (max-width: 850px) {
+  .renameInput input {
+    width: calc(165px - 45px);
+    height: 18px;
+    font-size: 18px;
+    line-height: 16px;
+  }
 }

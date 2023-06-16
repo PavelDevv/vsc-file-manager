@@ -15,7 +15,7 @@ export const FilesTree: React.FC = observer(() => {
   return (
     <div className={styles.filesTree}>
       {noResults && <p className={styles.noResults}>No results</p>}
-      {!noResults && items.map((file) => <File {...file} nestingLevel={0} key={file.id} />)}
+      {!noResults && items.map((file) => <File nestingLevel={1} {...file} key={file.id} />)}
     </div>
   )
 })

@@ -2,16 +2,25 @@
   display: block;
   margin: 0 auto;
   padding-left: 18px;
-  width: calc(700px - 18px - 2px - 2px);
+  width: calc(800px - 18px - 2px - 2px);
+  color: var(--text-color);
   height: 50px;
   font-size: 24px;
   border: 1px solid var(--search-border-color);
   border-radius: 8px;
   background-color: transparent;
   outline: none;
-  transition: 0.2s ease border-color;
+  transition: 0.2s ease border-color, 0.2s ease color;
 }
 
 .searchBar input:focus {
   border-color: var(--orange);
+}
+
+@media screen and (max-width: 850px) {
+  .searchBar input {
+    width: calc(100% - 20px - 18px);
+    height: 40px;
+    font-size: 20px;
+  }
 }

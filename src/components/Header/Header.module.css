@@ -6,8 +6,8 @@
 }
 
 .modeButton {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -28,12 +28,23 @@
 }
 
 .icon {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   fill: var(--icon-main-color);
   transition: 0.2s ease fill;
 }
 
 .isActive {
   fill: var(--orange);
+}
+
+@media screen and (max-width: 850px) {
+  .header {
+    height: 35px;
+  }
+  .modeButton,
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
+import cx from 'classnames'
 import filesStore from 'store/filesStore'
 
 import { Controls, RenameInput } from 'components'
@@ -17,7 +17,7 @@ interface IProps {
 type AllProps = IFile & IProps
 
 export const File: React.FC<AllProps> = observer(
-  ({ name, children, id, nestingLevel, type, sortedChildren }) => {
+  ({ name, children, id, type, sortedChildren, nestingLevel }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isRenameMode, setIsRenameMode] = useState<boolean>(false)
     const isFolder = type === 'folder'
@@ -87,6 +87,7 @@ export const File: React.FC<AllProps> = observer(
           </div>
           <Controls
             className={styles.controls}
+            nestingLevel={nestingLevel}
             removeFile={removeFile}
             addFile={addFile}
             addFolder={addFolder}
@@ -97,7 +98,7 @@ export const File: React.FC<AllProps> = observer(
         {isOpen && (
           <div className={styles.children}>
             {sortedChildren?.map((file) => (
-              <File key={file.id} nestingLevel={nestingLevel + 1} {...file} />
+              <File nestingLevel={nestingLevel + 1} key={file.id} {...file} />
             ))}
           </div>
         )}

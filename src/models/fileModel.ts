@@ -13,9 +13,9 @@ export class FileModel implements IFile {
   children?: IFile[] | undefined
 
   constructor({ name, type, children }: IProps) {
+    this.type = type
     this.name = name
     this.id = crypto.randomUUID()
-    this.type = type
     if (type === 'folder') this.children = children || []
     extendObservable(this, {
       name: this.name,
@@ -28,12 +28,12 @@ export class FileModel implements IFile {
 
   get sortedChildren(): IFile[] | undefined {
     if (this.children === undefined) return undefined
-    // sort here
+
     this.children.sort((firstFile, secondFile) => {
-      console.log(firstFile, secondFile)
       if (firstFile.type === 'folder' && secondFile.type === 'file') {
         return -1
       }
+
       if (firstFile.type === secondFile.type) {
         if (firstFile.name < secondFile.name) {
           return -1
@@ -45,6 +45,7 @@ export class FileModel implements IFile {
       }
       return 0
     })
-    return this.children as IFile[]
+
+    return this.children
   }
 }

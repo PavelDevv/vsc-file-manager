@@ -10,6 +10,7 @@ import styles from './Controls.module.css'
 
 interface IProps {
   type: FileType
+  nestingLevel: number
   className?: string
   startRename: (event: React.MouseEvent) => void
   addFile: () => void
@@ -24,6 +25,7 @@ export const Controls: React.FC<IProps> = ({
   addFile,
   addFolder,
   removeFile,
+  nestingLevel,
 }) => {
   return (
     <div className={cx(styles.controls, className)}>
@@ -32,9 +34,11 @@ export const Controls: React.FC<IProps> = ({
           <button onClick={addFile}>
             <AddFileIcon className={styles.icon} />
           </button>
-          <button onClick={addFolder}>
-            <AddFolderIcon className={styles.icon} />
-          </button>
+          {nestingLevel < 4 && (
+            <button onClick={addFolder}>
+              <AddFolderIcon className={styles.icon} />
+            </button>
+          )}
         </>
       )}
       <button onClick={startRename}>
