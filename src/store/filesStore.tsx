@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import { FileModel } from 'models/fileModel'
-import { files } from './filesMock'
-// import { files } from './filesHugeMock'
+// import { files } from './filesMock'
+import { files } from './filesHugeMock'
 
 interface IFilesStore {
   query: string
