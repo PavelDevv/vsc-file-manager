@@ -1,14 +1,5 @@
 import { themes } from './themes'
 
-export const debounce = (fn: (args: any) => void, time: number) => {
-  let timeoutId: number
-
-  return (...args: any) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn(args), time)
-  }
-}
-
 export const getTheme = (): Theme => {
   const themeItem = window.localStorage.getItem('theme')
 

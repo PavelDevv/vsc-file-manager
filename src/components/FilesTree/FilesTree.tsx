@@ -24,9 +24,6 @@ export const FilesTree: React.FC = observer(() => {
           data={items}
           itemContent={(_index, file) => <File nestingLevel={1} {...file} key={file.id} />}
         />
-        // {items.map((file) => (
-        //   <File nestingLevel={1} {...file} key={file.id} />
-        // ))}
       )}
     </div>
   )
