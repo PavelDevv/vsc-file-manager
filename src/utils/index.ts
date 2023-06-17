@@ -1,5 +1,24 @@
 import { themes } from './themes'
 
+export const sortFiles = (files: IFile[]) => {
+  files.sort((firstFile, secondFile) => {
+    if (firstFile.type === 'folder' && secondFile.type === 'file') {
+      return -1
+    }
+
+    if (firstFile.type === secondFile.type) {
+      if (firstFile.name < secondFile.name) {
+        return -1
+      }
+      if (firstFile.name > secondFile.name) {
+        return 1
+      }
+      return 0
+    }
+    return 0
+  })
+}
+
 export const getTheme = (): Theme => {
   const themeItem = window.localStorage.getItem('theme')
 

@@ -1,7 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import { FileModel } from 'models/fileModel'
-import { files } from './filesMock'
-// import { files } from './filesHugeMock'
+import { sortFiles } from 'utils'
+// import { files } from './filesMock'
+import { files } from './filesHugeMock'
 
 interface IFilesStore {
   query: string
@@ -11,6 +12,7 @@ interface IFilesStore {
   rename: (id: string, name: string) => void
   setQuery: (query: string) => void
   searchResults: IFile[] | undefined
+  totalFilesCount: number
 }
 
 interface IAdd {
@@ -31,6 +33,21 @@ class FilesStore implements IFilesStore {
     if (!this.query.length) return undefined
     const searchResult = this.#searchItems(this.files)
     return searchResult
+  }
+
+  get totalFilesCount(): number {
+    return this.#countItems(this.files)
+  }
+
+  #countItems(files: IFile[]): number {
+    let count = 0
+
+    files.forEach((item) => {
+      count++
+      if (item.children?.length) count += this.#countItems(item.children)
+    })
+
+    return count
   }
 
   #searchItems(files: IFile[]): IFile[] {
@@ -70,7 +87,13 @@ class FilesStore implements IFilesStore {
 
   add({ name, type, id }: IAdd) {
     const newFile = new FileModel({ name, type })
-    this.#getItem(id, this.files, (file) => file.children?.push(newFile))
+    this.#getItem(id, this.files, (file) => {
+      if (type === 'folder') {
+        file.children?.unshift(newFile)
+      } else {
+        file.children?.push(newFile)
+      }
+    })
   }
 
   remove(id: string) {
@@ -78,7 +101,10 @@ class FilesStore implements IFilesStore {
   }
 
   rename(id: string, name: string) {
-    this.#getItem(id, this.files, (file) => (file.name = name))
+    this.#getItem(id, this.files, (file, _index, files) => {
+      file.name = name
+      sortFiles(files)
+    })
   }
 
   setQuery(query: string) {
