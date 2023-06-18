@@ -19,6 +19,7 @@ type AllProps = IFile & IProps
 export const File: React.FC<AllProps> = observer(({ name, children, id, type, nestingLevel }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isRenameMode, setIsRenameMode] = useState<boolean>(false)
+
   const isFolder = type === 'folder'
   const withChildren = children && children.length > 0
   const Icon = isFolder ? FolderIcon : FileIcon
@@ -33,7 +34,7 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, type, ne
   const closeRename = () => setIsRenameMode(false)
 
   const submitRename = (newName: string) => {
-    filesStore.rename(id, newName)
+    filesStore.rename({ id, name: newName, withSort: nestingLevel > 1 })
     closeRename()
   }
 

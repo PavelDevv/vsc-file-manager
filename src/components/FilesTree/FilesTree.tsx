@@ -1,10 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 
-import { File } from 'components'
-import filesStore from 'store/filesStore'
-
 import { Virtuoso } from 'react-virtuoso'
+import { File } from 'components'
+
+import filesStore from 'store/filesStore'
 
 import styles from './FilesTree.module.css'
 
@@ -22,6 +22,7 @@ export const FilesTree: React.FC = observer(() => {
         <Virtuoso
           useWindowScroll
           data={items}
+          totalCount={items.length}
           itemContent={(_index, file) => <File nestingLevel={1} {...file} key={file.id} />}
         />
       )}

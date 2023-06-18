@@ -9,7 +9,7 @@ interface IFilesStore {
   files: IFile[]
   add: ({ name, type, id }: IAdd) => void
   remove: (id: string) => void
-  rename: (id: string, name: string) => void
+  rename: ({ id, name, withSort }: IRename) => void
   setQuery: (query: string) => void
   searchResults: IFile[] | undefined
   totalFilesCount: number
@@ -19,6 +19,12 @@ interface IAdd {
   name: string
   id: string
   type: FileType
+}
+
+interface IRename {
+  id: string
+  name: string
+  withSort: boolean
 }
 
 class FilesStore implements IFilesStore {
@@ -100,10 +106,10 @@ class FilesStore implements IFilesStore {
     this.#getItem(id, this.files, (_file, index, files) => files.splice(index, 1))
   }
 
-  rename(id: string, name: string) {
+  rename({ id, name, withSort }: IRename) {
     this.#getItem(id, this.files, (file, _index, files) => {
       file.name = name
-      sortFiles(files)
+      if (withSort) sortFiles(files)
     })
   }
 

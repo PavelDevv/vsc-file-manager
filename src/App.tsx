@@ -5,8 +5,8 @@ import { setInitialTheme } from 'utils'
 
 import styles from './App.module.css'
 
-// fix of sorting top layer and search results (do not sort)
-// tests
+// react-virtuoso items updating bug (top level items not renaming instantly, items drop their state (remount))
+// !! react-virtuoso remounts items on list change
 
 // Features later: move files (to other folders)
 
