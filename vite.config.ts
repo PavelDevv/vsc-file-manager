@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [react(), svgr(), tsconfigPaths()],
   // @ts-ignore
   test: {
+    globals: true,
     environment: 'jsdom',
     setupFiles: './setupTests.ts',
     // speed up since tests don't rely on css
