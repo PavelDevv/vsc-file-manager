@@ -5,9 +5,6 @@ import { setInitialTheme } from 'utils'
 
 import styles from './App.module.css'
 
-// react-virtuoso items updating bug (top level items not renaming instantly, items drop their state (remount))
-// !! react-virtuoso remounts items on list change
-
 // Features later: move files (to other folders)
 
 const App: React.FC = () => {

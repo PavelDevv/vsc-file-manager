@@ -95,7 +95,7 @@ export const File: React.FC<AllProps> = observer(({ name, children, id, type, ne
           type={type}
         />
       </div>
-      {isOpen && (
+      {isOpen && withChildren && (
         <div className={styles.children}>
           {children?.map((file) => (
             <File nestingLevel={nestingLevel + 1} key={file.id} {...file} />

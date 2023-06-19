@@ -1,5 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
+import { toJS } from 'mobx'
 
 import { Virtuoso } from 'react-virtuoso'
 import { File } from 'components'
@@ -12,7 +13,7 @@ export const FilesTree: React.FC = observer(() => {
   const { files, searchResults } = filesStore
 
   const noResults = searchResults && searchResults.length === 0
-  const items = searchResults && searchResults.length > 0 ? searchResults : files
+  const items = searchResults && searchResults.length > 0 ? toJS(searchResults) : toJS(files)
 
   return (
     <div className={styles.filesTree}>
@@ -22,7 +23,6 @@ export const FilesTree: React.FC = observer(() => {
         <Virtuoso
           useWindowScroll
           data={items}
-          totalCount={items.length}
           itemContent={(_index, file) => <File nestingLevel={1} {...file} key={file.id} />}
         />
       )}
